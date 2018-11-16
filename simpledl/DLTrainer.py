@@ -45,6 +45,7 @@ class DLTrainer(object):
         return -1./m * np.sum(Y*self.safelog(Y_hat) + (1-Y)*self.safelog(1-Y_hat))
 
     def cross_entropy_cost_with_regularization(self, model, cache, Y):
+        """compute overall cost including regularization"""
         l_output = len(model['shape']) - 1
         Y_hat = cache['A%d' % l_output]
         m = Y.shape[1]
@@ -80,6 +81,7 @@ class DLTrainer(object):
         return pct_correct
 
     def forward(self, model, X):
+        """forward prop"""
         cache = {}
         cache['A0'] = X
         for i in range(1, len(model['shape'])):
@@ -88,6 +90,7 @@ class DLTrainer(object):
         return cache
 
     def backward(self, model, cache, X, Y):
+        """backprop"""
         m = X.shape[0]
         l_output = len(model['shape']) - 1
         Y_hat = cache['A%d' % l_output]
@@ -105,6 +108,7 @@ class DLTrainer(object):
         return cache
 
     def update_parameters(self, model, cache):
+        """update weights and biases throughout the network"""
         for i in reversed(range(1, len(model['shape']))):
             model['w%d' % i] -= model['alpha'] * cache['dw%d' % i]
             model['b%d' % i] -= model['alpha'] * cache['db%d' % i]
@@ -124,7 +128,7 @@ class DLTrainer(object):
             if print_cost_every > 0:
                 if e % print_cost_every == 0:
                     accuracy = self.correct(model, X, Y)
-                    print("Cost after {} epochs: {} (accuracy: {})".format(e, cache['J'], accuracy))
+                    print("Cost after {} epochs: {} (training set accuracy: {})".format(e, cache['J'], accuracy))
 
             model = self.update_parameters(model, cache)
 
@@ -135,4 +139,5 @@ class DLTrainer(object):
         return model, self.costs, self.accuracy
 
     def get_training_stats(self, model, X_dev, Y_dev):
+        """return some simple stats"""
         return "dev accuracy: {:.02f}%".format(self.correct(model, X_dev, Y_dev))

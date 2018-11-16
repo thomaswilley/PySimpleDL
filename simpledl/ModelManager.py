@@ -18,7 +18,7 @@ class ModelManager(object):
         if self.path:
             self.model = self.load_model(self.path)
 
-    def create_model(self, dims=None, activations=None, vectorizer=None, default_alpha=None, default_lambda=None):
+    def create_model(self, dims=None, activations=None, vectorizer=None, default_alpha=0.1, default_lambda=0.1):
         """initialize model - note that activations & vectorizer must be tucked inside model for pickling"""
         assert(len(activations) == len(dims)-1) # network should have L-l activations
         model = {}
