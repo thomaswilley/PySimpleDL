@@ -29,4 +29,4 @@ Additional copyrights included within source.
 
 ## License
 
-Open sourced under the [BSD](LICENSE).
+Open sourced under the [BSD license](LICENSE).
