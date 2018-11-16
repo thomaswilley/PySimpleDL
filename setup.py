@@ -6,7 +6,7 @@ setup(
     url='https://github.com/thomaswilley/pysimpledl',
     author='@thomaswilley',
     description=('A simple deep learning package with minimal dependencies.'),
-    license='AGPL3',
+    license='BSD',
     keywords='AI ML DL machinelearning',
     classifiers=[
         'Development Status :: 3 - Alpha',
