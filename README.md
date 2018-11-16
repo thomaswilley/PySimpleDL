@@ -7,7 +7,7 @@ A simple L-layer machine learning library with minimal dependencies.
 - Built with simplicity in mind and limited 3rd party libraries (just
   numpy!)
 
-More documentation forthcoming.
+Check out example/ for a few examples of usage.
 
 ## Author
 
