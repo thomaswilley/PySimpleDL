@@ -2,3 +2,5 @@
 *.inpy
 venv/
 .ipynb_checkpoints/
+*.bak
+*.onnx
