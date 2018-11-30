@@ -1,11 +1,10 @@
 # SimpleDL
 
-A simple L-layer machine learning library with minimal dependencies.
+A simple L-layer machine learning library with minimal dependencies and optional interoperability with ONNX.
 
-- Design, train, load, and save ML/DL models
+- Design, train, load, and save ML/DL models (Including to [ONNX][0]!)
 - Easy to embed in edge or cloud services for inferencing
-- Built with simplicity in mind and limited 3rd party libraries (just
-  numpy!)
+- Simple and small, good for learning
 
 Installation:
 ```bash
@@ -30,3 +29,5 @@ Additional copyrights included within source.
 ## License
 
 Open sourced under the [BSD license](LICENSE).
+
+[0]: https://onnx.ai
