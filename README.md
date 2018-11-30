@@ -7,7 +7,17 @@ A simple L-layer machine learning library with minimal dependencies.
 - Built with simplicity in mind and limited 3rd party libraries (just
   numpy!)
 
-More documentation forthcoming.
+Installation:
+```bash
+$ bash pip install git+https://github.com/thomaswilley/PySimpleDL.git
+```
+
+Usage: Check out example/ for a few examples of usage.
+
+```python
+from simpledl.DLTrainer import DLTrainer
+from simpledl.ModelManager import ModelManager
+```
 
 ## Author
 
@@ -19,4 +29,4 @@ Additional copyrights included within source.
 
 ## License
 
-Open sourced under the [AGPL 3.0](LICENSE).
+Open sourced under the [BSD license](LICENSE).
