@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='simpledl',
-    version='0.1.0',
+    version='0.1.1',
     url='https://github.com/thomaswilley/pysimpledl',
     author='@thomaswilley',
-    description=('A simple deep learning package with minimal dependencies.'),
+    description=('A simple deep learning package with minimal dependencies and limited interoperability with ONNX.'),
     license='BSD',
     keywords='AI ML DL machinelearning',
     classifiers=[

@@ -35,9 +35,26 @@ class ONNXManager(ModelManager):
         # We're basically hard wiring this to DL Trainer's implementation initially...
         if layer_num == l_output:
             if dim_output > 1:
+                # if output dimension > 1, return the highest scoring category
                 nodes.append(helper.make_node("ArgMax", ['A{}'.format(layer_num)], ['Y']))
             else:
+                # if output dimension is 1, force output to binary 1/0
                 nodes.append(helper.make_node("Greater", ['A{}'.format(layer_num)], [0.5]))
+                values = np.array([0.5])
+                node = helper.make_node(
+                        'Constant',
+                        inputs=[],
+                        outputs=['CONST_0.5'],
+                        value=onnx.helper.make_tensor(
+                                name='const_tensor',
+                                data_type=onnx.TensorProto.DOUBLE,
+                                dims=values.shape,
+                                vals=values.flatten().astype(float),
+                            ),
+                    )
+                nodes.append(node)
+                nodes.append(helper.make_node("Greater", ['A{}'.format(layer_num), 'CONST_0.5'], ['_Y']))
+                nodes.append(helper.make_node("Cast", ['_Y'], ['Y'], to=getattr(TensorProto, 'DOUBLE')))
 
         return nodes
 
